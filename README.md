@@ -11,7 +11,6 @@ A full-stack Application
 - 🔍 Search movies by title, genre, or year  
 - 📖 View detailed movie info (title, release year, genre, description, rating, etc.)  
 - ❤️ Add movies to favorites/watchlist  
-- 🌙 Light/Dark mode support  
 
 ### Backend (Node.js + Express)
 - 🔐 REST API for movie data  
