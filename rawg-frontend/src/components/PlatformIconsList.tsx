@@ -5,7 +5,7 @@ import type { IconType } from "react-icons";
 import { FaAndroid, FaPlaystation, FaWindows, FaXbox } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
-import type { Platform } from "../hooks/userGames";
+import type { Platform } from "../hooks/useGames";
 
 interface Props {
   platforms: Platform[];
