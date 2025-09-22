@@ -1,25 +1,45 @@
 {
+  // Root tsconfig for Node-side tooling (e.g., Vite config)
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2023",
-    "lib": ["ES2023"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+    // Compiler configuration for this Node-facing tsconfig
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo", // Path for incremental build metadata (speeds up subsequent TS runs)
+    "target": "ES2023", // Target ECMAScript version for type checking and lib selection
+    "lib": ["ES2023"], // Standard library type definitions to include
+    "module": "ESNext", // Module system expected by the bundler
+    "skipLibCheck": true, // Skip type checking of .d.ts files in node_modules to speed up builds
 
-    /* Bundler mode */
+    // Resolve modules the way bundlers (like Vite/Rollup) do
     "moduleResolution": "bundler",
+    // Allow imports that include .ts/.tsx extensions (bundler handles them)
     "allowImportingTsExtensions": true,
+    // Preserve import/export syntax exactly as written for the bundler
     "verbatimModuleSyntax": true,
+    // Treat files as modules based on syntax; required in bundler scenarios
     "moduleDetection": "force",
+    // Do not emit JS; TS is used purely for type checking here
     "noEmit": true,
 
-    /* Linting */
+    // Enable the full suite of strict type-checking options
     "strict": true,
+    // Error on declared but unused local variables
     "noUnusedLocals": true,
+    // Error on unused function/method parameters
     "noUnusedParameters": true,
+    // Only allow syntax that can be erased without affecting runtime (when noEmit)
     "erasableSyntaxOnly": true,
+    // Disallow implicit fallthrough between switch cases
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    // Disallow imports whose only effect is side effects (and go unchecked)
+    "noUncheckedSideEffectImports": true,
+    // Ensure all code paths in functions return a value
+    "noImplicitReturns": true,
+    // Forbid implicit any types
+    "noImplicitAny": true,
+    // Forbid implicit this types
+    "noImplicitThis": true,
+    // Enforce strict mode in all files
+    "alwaysStrict": true
   },
+  // Limit the files considered by this tsconfig to the Vite config file
   "include": ["vite.config.ts"]
 }
