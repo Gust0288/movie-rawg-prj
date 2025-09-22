@@ -10,23 +10,23 @@ import {
 
 import { useState } from 'react';
 
-import useGenres, { type Genre } from '../hooks/useGenres';
+import useStores, { type Store } from '../hooks/useStores';
 import { getCroppedImageUrl } from '../services/image-url';
 
 interface Props {
-  onSelectGenre: (genre: Genre | null) => void;
-  selectedGenre: Genre | null;
+  onSelectStore: (store: Store | null) => void;
+  selectedStore: Store | null;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
+const StoreList = ({ onSelectStore, selectedStore }: Props) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const COLLAPSED_GENRE_COUNT = 5;
+  const COLLAPSED_STORE_COUNT = 5;
 
-  const { data: genres, error, isLoading } = useGenres();
+  const { data: stores, error, isLoading } = useStores();
 
-  const displayedGenres = isExpanded
-    ? genres
-    : genres.slice(0, COLLAPSED_GENRE_COUNT);
+  const displayedStores = isExpanded
+    ? stores
+    : stores.slice(0, COLLAPSED_STORE_COUNT);
 
   if (error) return null;
 
@@ -34,17 +34,17 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 
   return (
     <>
-      <Button variant="link" onClick={() => onSelectGenre(null)}>
+      <Button variant="link" onClick={() => onSelectStore(null)}>
         <Heading fontSize="2xl" marginBottom={3}>
-          Genres
+          Stores
         </Heading>
       </Button>
       <List>
-        {displayedGenres.map((genre) => (
-          <ListItem key={genre.id} padding="5px">
+        {displayedStores.map((store) => (
+          <ListItem key={store.id} padding="5px">
             <HStack>
               <Image
-                src={getCroppedImageUrl(genre.image_background)}
+                src={getCroppedImageUrl(store.image_background)}
                 boxSize="32px"
                 borderRadius={8}
                 objectFit="cover"
@@ -52,12 +52,12 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               <Button
                 variant="link"
                 fontSize="lg"
-                onClick={() => onSelectGenre(genre)}
+                onClick={() => onSelectStore(store)}
                 colorScheme={
-                  genre.id === selectedGenre?.id ? 'yellow' : undefined
+                  store.id === selectedStore?.id ? 'yellow' : undefined
                 }
               >
-                {genre.name}
+                {store.name}
               </Button>
             </HStack>
           </ListItem>
@@ -70,4 +70,4 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   );
 };
 
-export default GenreList;
+export default StoreList;
