@@ -1,4 +1,4 @@
-# 🎬 Games Database
+# 🎬 Games* Database
 
 A full-stack Application
 
