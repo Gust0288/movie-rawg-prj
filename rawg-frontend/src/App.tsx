@@ -19,12 +19,6 @@ export interface GameQuery {
 }
 
 function App() {
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  // const [selectedStore, setSelectedStore] = useState<Store | null>(null);
-  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-  //   null
-  // );
-
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   const handleSelectGenre = (genre: Genre | null) => {
