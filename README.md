@@ -2,6 +2,8 @@
 
 A full-stack Application
 
+Deploy-link: https://frontend-rag.onrender.com
+
 ---
 
 ## 🚀 Features (IN PROGRESS)
