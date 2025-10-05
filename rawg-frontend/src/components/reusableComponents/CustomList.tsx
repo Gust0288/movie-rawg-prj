@@ -40,13 +40,16 @@ const CustomList = <T extends Item>({
 
   const { data: items, error, isLoading } = useDataHook();
 
-  const displayedItems = isExpanded
-    ? items
-    : items.slice(0, COLLAPSED_GENRE_COUNT);
-
   if (error) return null;
 
   if (isLoading) return <Spinner />;
+
+  // Ensure items exists before using slice
+  if (!items) return null;
+
+  const displayedItems = isExpanded
+    ? items
+    : items.slice(0, COLLAPSED_GENRE_COUNT);
 
   return (
     <>
